@@ -1,0 +1,74 @@
+{%extends "user/base.html"%}
+
+{%block content%}
+
+{%if items%}
+
+<div class="container">
+    <h4 class="heading-4 my-3">Items</h3>
+
+    <div class="row row-cols-1 row-cols-md-3 ">
+        
+        {% for food in items %}
+        
+            <div class="col my-4">
+                <div class="card bg-light" id="card{{food.id}}">
+                    {%if food.image%}
+                    <img class="card-img-top" style="overflow:hidden;width:auto;min-height:250px ;" src="{{food.image.url}}" alt="Photo of {{food.name}}">
+                    {%else%}
+                    <img class="card-img-top" height="200px" width="200px" src="" alt="Photo of {{food.name}}">
+                    
+                    {%endif%}
+                    
+                    <div class="card-body">
+                        <h5 class="card-title">{{food.name}}</h5>
+                        <p class="card-text">
+                            Retail Price : Rs {{food.rprice}}<br>
+                            Wholesale Price : Rs {{food.wprice}}
+                        </p>
+                        <a href="{% url 'addtocart' id=food.id %}" class="btn btn-outline-success my-2 my-sm-0">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        {%endfor%}
+    </div>
+</div>
+
+{%endif%}
+
+
+{%if users%}
+<div class="container">
+<h4 class="heading-4">Users</h4>
+<div class="row row-cols-1 row-cols-md-3 ">
+    {% for user in users %}
+    
+        <div class="col my-4">
+            <div class="card bg-light" id="card{{food.id}}">
+                {%if user.profilepicture.pp.url%}
+                <img class="card-img-top" style="overflow:hidden;width:auto;height:auto;" src="{{user.profilepicture.pp.url}}" alt="Photo of {{food.name}}">
+                {%else%}
+                <img class="card-img-top" height="200px" width="200px" src="" alt="Photo of {{user.username}}">
+                
+                {%endif%}
+                
+                <div class="card-body">
+                    <h5 class="card-title">{{user.username}}</h5>
+                    <p class="card-text">
+                        {%if user.email%}
+                            Email : {{user.email}}<br>
+                        {%endif%}
+
+                        {%if user.geodata.phone1%}
+                            Phone no : {{ user.geodata.phone1}}<br> {%endif%}
+                    </p>
+                    <a href="{% url 'searchuser' user.username %}" class="btn btn-outline-success my-2 my-sm-0">Profile</a>
+                </div>
+            </div>
+        </div>
+    {%endfor%}
+</div>
+{%endif%}
+</div>
+
+{%endblock%}

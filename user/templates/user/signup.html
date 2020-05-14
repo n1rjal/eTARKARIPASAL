@@ -1,0 +1,35 @@
+{%extends "user/base.html" %}
+{%block content%}
+{%load crispy_forms_tags%}
+
+
+{%if messages%}
+    {%for msg in messages%}
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>{{msg.message}}</strong>
+        </div>
+    {%endfor%}
+{%endif%}
+
+    <div class="container my-2"> 
+        <div class="container my-2">
+            <form action=# method="post" enctype="multipart/form-data">
+                <legend>Register Now</legend>
+                {%csrf_token%}
+                {{form|crispy}}
+                {{jform|crispy}}
+                <p>Select a Profile Picture</p>
+                {{ppform|crispy}}
+                <input type="submit" value="signup">
+                <small class="text-muted">
+                    Have an account <a href="{% url 'login'%}">Log in</a>
+                </small>
+            </form>
+        </div>
+
+    </div>
+        
+
+
+{%endblock%}

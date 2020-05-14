@@ -1,0 +1,77 @@
+{%extends 'user/base.html'%}
+
+{%block title%}
+    -Cart
+{%endblock%}
+
+{%block content%}
+
+{%if items%}
+<form action=# method="GET">
+{%csrf_token%}
+<div class="container my-4">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Wholesale Price</th>
+            <th scope="col">Retailprice</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {%for item in items%}
+        <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{item.name}}</td>
+            <td>Rs {{item.wprice}}</td>
+            <td>Rs {{item.rprice}}</td>
+            <td>
+                
+                Quantity : {{qform.quantity}}
+                
+                <a href="{%url 'removefromcart' id=item.id %}" class="btn btn-outline-danger mx-2 my-2 my-sm-0">Remove</a>
+            </td>
+        </tr>
+        {%endfor%}
+        <tr>
+            <td></td>
+            <td></td>
+            
+            <td>
+                {%if wtotal%}
+                    Rs {{wtotal}}
+                {%endif%}
+            </td>
+
+            <td>
+                {%if rtotal%}
+                    Rs {{rtotal}}
+                {%endif%}
+            </td>
+            <td>
+                <input type="submit" class="btn btn-outline-success my-2 my-sm-0" value="Calculate">
+            </td>
+        </tr>
+        
+    </table>
+    {%if rtotal%}
+    <small class="text-muted"><a href="{%url 'bill'%}">Click me for your bill</a></small>
+    {%endif%}
+</div>
+
+</form>
+{%else%}
+<div clss="container text-center">
+    <p class="text-center mt-5">
+        No item in the cart,
+        Please add some items
+    </p>
+    
+</div>
+
+
+{%endif%}
+
+{%endblock%}

@@ -1,0 +1,84 @@
+## TARKARI APP
+This project is based on the idea of Rupesh Nepal...
+This might be a very good idea as this is not implemented in Nepal yet.
+
+let's see what do we get here..
+I hope i will finish this in 5 days minimum time....
+
+## About Porject
+Expected completion time is 5 days
+## Expected framework: 
+
+### django python
+for the main app
+
+### beautiful soup4
+for parsing tarkari price from http://kalimatimarket.gov.np/home/language/EN
+This site contains both retail and wholesale price
+
+### Pandas
+for analysist if i take this prokect seriously
+
+## Thoughts
+This is an ongoing problem in Nepal
+
+## Routine
+### project day 1
+#### AIM:    Huge Research on this topic ,Create routes and users and make login,signup page, data model
+
+### project day 2
+#### AIM:    Create a great understanding of form/DB models, and parse data to be used from the governmental page
+
+### project day 3
+#### AIM:    Math, templates and testing of different models in the project
+
+### project day 4
+#### AIM:    build a cart based idea too, SET app for production
+
+### project day 5
+#### AIM:    DEPLOY THE APP IN HEROKU WITH SOURCE CODE IN GITHUB
+
+#FUTURE PLANS:
+1. Real website on the making.
+2. Sale the app too
+3. Make a mobile app out of this.
+4. If this is famous, most unlikey, make an API out of this
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

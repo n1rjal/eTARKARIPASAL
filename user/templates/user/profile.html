@@ -1,0 +1,44 @@
+{%extends 'user/base.html'%}
+
+{%block title%}
+    - {{user.username}}
+{%endblock%}
+
+{%block content%}
+
+
+{%if messages%}
+    {%for msg in messages%}
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>{{msg.message}}</strong>
+        </div>
+    {%endfor%}
+{%endif%}
+
+<div class="d-flex justify-content-center my-3" alt="PROFILE-PICTURE">
+    <img src="{{user.profilepicture.pp.url}}" class="img-thumbnail">
+    <div class="mt-4 mx-2">
+        <h1 class="heading-4 mx-1">You are logged in as</h1>
+        <p class="mx-1">
+            Username = {{user.username}}<br>
+            Email = {%if user.email%}{{user.email}}{%else%}No email{%endif%}<br>
+            {%if user.geodata.phone1%}
+            {{user.geodata.phone1}}<a class="btn btn-primary mx-3" href="tel:{{user.geodata.phone1}}"><i class="fa fa-phone"></i></a><br>
+            {%endif%}
+            {%if address%}
+            Address{{user.geodata.address}}<br>
+            {%endif%}
+            {%if user.geodata.about%}
+            <h5 class="display-5">Bio</h5>
+            <p>{{user.geodata.about}}</p>
+            {%endif%}
+            <a href="{%url 'update_profile'%}" class="btn btn-primary my-3">Update</a>
+            <a href="{% url 'logout'%}" class="btn btn-primary my-3">Log Out</a>
+        </p>
+    </div>
+    
+    </div>            
+</div>
+
+{%endblock%}

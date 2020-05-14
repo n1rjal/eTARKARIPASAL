@@ -1,0 +1,56 @@
+{%extends 'user/base.html'%}
+
+{%block title%}
+    - 
+    {%if user.username%}
+        {{user.username}}
+    {%else%}
+        No user found
+    {%endif%}
+{%endblock%}
+
+{%block content%}
+
+
+{%if messages%}
+    {%for msg in messages%}
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>{{msg.message}}</strong>
+        </div>
+    {%endfor%}
+{%endif%}
+
+
+{%if user%}
+    <div class="container" alt="PROFILE-PICTURE">
+        <div class="container my-2">
+        <img src="{{user.profilepicture.pp.url}}" class="img-thumbnail">
+            <div class="mt-4 mx-2">
+                <h1 class="heading-4 mx-1">{{user.username}}</h1>
+                <p class="mx-1">
+                    Username = {{user.username}}<br>
+                    {%if user.email%}Email = {{user.email}}{%else%}No email{%endif%}<br>
+                    {%if user.geodata.phone1%}
+                    {{user.geodata.phone1}}<a class="btn btn-primary mx-3" href="tel:{{user.geodata.phone1}}"><i class="fa fa-phone"></i></a><br>
+                    {%endif%}
+                    {%if user.geodata.address%}
+                    Address : {{user.geodata.address}}<br>
+                    {%endif%}
+                    {%if user.geodata.about%}
+                    <h5 class="display-5"> Bio </h5>
+                    <p>{{user.geodata.about}}</p>
+                    {%endif%}
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+{%else%}
+    <div class="container">
+        <br>
+        <h1 class="display-1">No user found</h1>
+    </div>
+{%endif%}
+{%endblock%}

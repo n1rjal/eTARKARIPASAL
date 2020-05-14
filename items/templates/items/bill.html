@@ -1,0 +1,75 @@
+{%extends "user/base.html"%}
+{%block title%}
+ - Bill 
+{%endblock%}
+
+
+{%block content%}
+<div class="container">
+    <table id="mytable" class="table my-2">
+        <tr>
+            <th>Ordered by</th>
+            <th>{{user.username}}</th>
+        </tr>
+    </table>
+    <div class>
+        <p id="total_items"></p>
+        <p id="totalprice_retail"></p>
+        <p id="totalprice_wholesale"></p>
+    </div>
+    <div>
+        
+        <a href="{%url 'export'%}">Click for the bill</a><br>
+        <a href=# class="btn btn-outline-primary">Pay using Esewa</a><br>
+        <a href=# class="btn btn-outline-primary">Pay using Khalti</a><br>
+    </div>
+    
+</div>
+<script>
+    
+    let xhr=new XMLHttpRequest();
+    console.log("called");
+    xhr.open("GET","{%url 'currentcart'%}",true);
+    xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+    xhr.send();
+    
+    xhr.onreadystatechange=()=>{
+        if (xhr.readyState===4){
+        let resp= xhr.responseText;
+
+    resp=JSON.parse(resp);
+    console.log(resp);
+    let total_items=parseInt(resp["total_items"]);
+    
+    for (let i=0;i<=total_items;i++)
+    {
+
+        tablerow=`
+            <td>${i}</td>
+            <td>${resp[i].name}
+            <td>${resp[i].wprice}</td>
+            <td>${resp[i].rprice}</td>
+            <td>${resp[i].quantity}</td>
+            <td>${resp[i].wsum}</td>
+            <td>${resp[i].rsum}</td>
+            <td>${resp[i].wcalc}</td>
+            <td>${resp[i].rcalc}</td>
+        `
+        console.log("called")
+        let table=document.getElementById("mytable");
+        let tablenewrow=document.createElement('tr');
+        tablenewrow.innerHTML=tablerow;
+        table.appendChild(tablenewrow);
+    }
+
+    document.getElementById("total_items").innerHTML="Total Items = "+resp["total_items"]
+    document.getElementById("totalprice_wholesale").innerHTML="Wholesale Total = "+resp["wtotal"]
+    document.getElementById("totalprice_retail").innerHTML="Retail Total = "+resp["rtotal"]
+
+
+    }     
+}
+    
+
+</script>
+{%endblock%}

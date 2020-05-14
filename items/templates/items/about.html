@@ -1,0 +1,33 @@
+{%extends "user/base.html"%}
+
+{%block content%}
+{%load crispy_forms_tags%}
+<div class="container-fluid" style="height:100vh">
+    <div class="text-center h-100 d-flex justify-content-center align-items-center" style="margin:auto">
+        <div class="container">
+            <h4 class="display-4 text-center my-3" style="font-family: 'Oswald', sans-serif;">HELLO NAMASTE BONJOUR OLÁ </h4>
+            {%if user%}
+            <p>=== Welcome {{user.username}} ===</p>
+            {%else%}
+            <p>=== Welcome Guest ===</p>
+            
+            {%endif%}
+            <small class="text-muted">This is a N1 creation &#9996;</small>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="container">
+        <div class="container">
+
+    
+            <form method="POST" action=#>
+                {%csrf_token%}
+                {{cform|crispy}}
+                <input type="submit" class="btn btn-outline-sucess" value="submit">
+            </form>
+        </div>
+    </div>
+</div>
+{%endblock%}
