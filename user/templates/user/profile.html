@@ -5,7 +5,7 @@
 {%endblock%}
 
 {%block content%}
-
+{%load static%}
 
 {%if messages%}
     {%for msg in messages%}
@@ -17,12 +17,12 @@
 {%endif%}
 
 <div class="d-flex justify-content-center my-3" alt="PROFILE-PICTURE">
-    <img src="{{user.profilepicture.pp.url}}" class="img-thumbnail">
+        
     <div class="mt-4 mx-2">
         <h1 class="heading-4 mx-1">You are logged in as</h1>
         <p class="mx-1">
             Username = {{user.username}}<br>
-            Email = {%if user.email%}{{user.email}}{%else%}No email{%endif%}<br>
+            Email = {%if user.email%}<a href="mailto:{{user.email}}">{{user.email}}</a>{%else%}No email{%endif%}<br>
             {%if user.geodata.phone1%}
             {{user.geodata.phone1}}<a class="btn btn-primary mx-3" href="tel:{{user.geodata.phone1}}"><i class="fa fa-phone"></i></a><br>
             {%endif%}

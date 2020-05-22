@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import UserRegisterForm,UserLoginForm,UserJobForm,ProfilePictureForm,GeodataForm
+from .forms import UserRegisterForm,UserLoginForm,UserJobForm,GeodataForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout as user_logout
 from django.contrib.auth.decorators import login_required
@@ -9,38 +9,34 @@ from django.contrib.auth.models import User
 def adduser(request):
     form=UserRegisterForm()
     jform=UserJobForm()
-    ppform=ProfilePictureForm()
+    gform=GeodataForm()
     if request.method=="GET":
-        return render(request,"user/signup.html",{"form":form,"jform":jform,"ppform":ppform})
+        return render(request,"user/signup.html",{"form":form,"jform":jform,"gform":gform})
 
     if request.method=="POST":
-        print(request.POST,request.FILES)
         form=UserRegisterForm(request.POST)
         jform=UserJobForm(request.POST)
-        ppform=ProfilePictureForm(data=request.POST,files=request.FILES)
-        print ("form ",form.is_valid())
-        print ("jform ",jform.is_valid())
-        print ("ppform ",ppform.is_valid())
-        if form.is_valid() and jform.is_valid() and ppform.is_valid():
+        gform=GeodataForm(request.POST)
+        if form.is_valid() and jform.is_valid() and gform.is_valid():
             
             username=request.POST.get("username")
             messages.success(request,"Succesfully created user for {}".format(username))
             
             user=form.save(commit=True)
             
+            GEO=gform.save(commit=False)
+            GEO.user=user
+
             JOB=jform.save(commit=False)
             JOB.user=user
-
-            PROFILE_PIC=ppform.save(commit=False)
-            PROFILE_PIC.user=user
-
-            PROFILE_PIC.save()
+        
             JOB.save()
+            GEO.save()
             return redirect("login")
         
         else:
             messages.error(request,"Invalid Entry")
-            return render(request,"user/signup.html",{"form":form,"jform":jform,"ppform":ppform})
+            return render(request,"user/signup.html",{"form":form,"jform":jform})
 
 
 # Create your views here.
@@ -81,19 +77,17 @@ def update(request):
     
     form=UserRegisterForm(instance=request.user)
     jform=UserJobForm(instance=request.user.job)
-    ppform=ProfilePictureForm(instance=request.user.profilepicture)
     gform=GeodataForm(instance=request.user.geodata)
     if request.method=="GET":
-        return render(request,"user/update.html",{"form":form,"jform":jform,"ppform":ppform,"gform":gform})
+        return render(request,"user/update.html",{"form":form,"jform":jform,"gform":gform})
 
     if request.method=="POST":
         form=UserRegisterForm(request.POST,instance=request.user)
         jform=UserJobForm(request.POST,instance=request.user.job)
-        ppform=ProfilePictureForm(data=request.POST,files=request.FILES,instance=request.user.profilepicture)
         gform=GeodataForm(data=request.POST,instance=request.user.geodata)
 
         print(request.POST["password1"])
-        if form.is_valid() and jform.is_valid() and ppform.is_valid():
+        if form.is_valid() and jform.is_valid():
             user=form.save(commit=True)
         
             JOB=jform.save(commit=False)
@@ -102,10 +96,6 @@ def update(request):
             GEOFORM=gform.save(commit=False)
             GEOFORM.user=user
 
-            PROFILE_PIC=ppform.save(commit=False)
-            PROFILE_PIC.user=user
-
-            PROFILE_PIC.save()
             JOB.save()
             GEOFORM.save()
 
@@ -116,9 +106,8 @@ def update(request):
             if user is not None:
                 login(request,user)
             return redirect('profile')
-            
         else:
-            return render(request,"user/update.html",{"form":form,"jform":jform,"ppform":ppform,"gform":gform})
+            return render(request,"user/update.html",{"form":form,"jform":jform,"gform":gform})
 
 def searchuser(request,username):
     #lets search user by name

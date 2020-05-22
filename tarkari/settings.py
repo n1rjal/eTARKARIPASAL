@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,10 +19,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '=+8qbl2)n0d$&&ag3g5c8x=4p8s^7xpv-8a3c*9g3)@m#&hmjq'
+with open("seckey.txt","r") as filee:
+    SECRET_KEY = filee.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['tarkariapp.herokuapp.com','192.168.1.94','localhost','127.0.0.1']
 
@@ -134,4 +134,3 @@ STATIC_ROOT = os.path.join(BASE_DIR,"staticfiles")
 CRISPY_TEMPLATE_PACK="bootstrap4"
 
 LOGIN_URL="/user/login"
-django_heroku.settings(locals())

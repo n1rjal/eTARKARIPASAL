@@ -1,11 +1,11 @@
 {%extends "user/base.html"%}
 
 {%block content%}
-
+{%load static%}
 {%if items%}
 
 <div class="container">
-    <h4 class="heading-4 my-3">Items</h3>
+    <h4 class="display-4 m-3">ITEMS</h3>
 
     <div class="row row-cols-1 row-cols-md-3 ">
         
@@ -13,12 +13,8 @@
         
             <div class="col my-4">
                 <div class="card bg-light" id="card{{food.id}}">
-                    {%if food.image%}
-                    <img class="card-img-top" style="overflow:hidden;width:auto;min-height:250px ;" src="{{food.image.url}}" alt="Photo of {{food.name}}">
-                    {%else%}
-                    <img class="card-img-top" height="200px" width="200px" src="" alt="Photo of {{food.name}}">
-                    
-                    {%endif%}
+                    <img class="card-img-top" height=200 style="overflow:hidden;width:auto;min-height:250px ;" 
+                    src="{%static 'items/vege.jpg'%}" alt="Photo of {{food.name}}">
                     
                     <div class="card-body">
                         <h5 class="card-title">{{food.name}}</h5>
@@ -34,12 +30,14 @@
     </div>
 </div>
 
+<hr width=60% style="display:block;margin:1cm auto"> 
+
 {%endif%}
 
 
 {%if users%}
 <div class="container">
-<h4 class="heading-4">Users</h4>
+<h4 class="display-4 m-3">USERS</h4>
 <div class="row row-cols-1 row-cols-md-3 ">
     {% for user in users %}
     
@@ -47,9 +45,6 @@
             <div class="card bg-light" id="card{{food.id}}">
                 {%if user.profilepicture.pp.url%}
                 <img class="card-img-top" style="overflow:hidden;width:auto;height:auto;" src="{{user.profilepicture.pp.url}}" alt="Photo of {{food.name}}">
-                {%else%}
-                <img class="card-img-top" height="200px" width="200px" src="" alt="Photo of {{user.username}}">
-                
                 {%endif%}
                 
                 <div class="card-body">

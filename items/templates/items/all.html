@@ -1,0 +1,47 @@
+{%extends 'user/base.html'%}
+
+{%block title%}
+    - All  
+{%endblock%}
+
+{%block content%}
+
+        {%if messages%}
+            {%for msg in messages%}
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>{{msg.message}}</strong>
+                </div>
+            {%endfor%}
+        {%endif%}
+       
+    <div class="container">
+
+    <h4 class="heading-4 my-3" id="items">Items</h4>
+
+    <div class="row row-cols-1 row-cols-md-3 ">
+        {% for food in items %}
+        
+            <div class="col my-4">
+                <div class="card bg-light" id="card{{food.id}}">
+                    {%if food.image%}
+                    <img class="card-img-top" style="overflow:hidden;width:auto;min-height:250px ;" src="{{food.image.url}}" alt="Photo of {{food.name}}">
+                    {%else%}
+                    <img class="card-img-top" height="200px" width="200px" src="" alt="Photo of {{food.name}}">
+                    
+                    {%endif%}
+                    
+                    <div class="card-body">
+                        <h5 class="card-title">{{food.name}}</h5>
+                        <p class="card-text">
+                            Retail Price : Rs {{food.rprice}}<br>
+                            Wholesale Price : Rs {{food.wprice}}
+                        </p>
+                        <a href="{% url 'addtocart' id=food.id %}" class="btn btn-outline-success my-2 my-sm-0">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        {%endfor%}
+    </div>
+</div>
+{%endblock%}

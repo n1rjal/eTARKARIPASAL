@@ -5,7 +5,7 @@
 {%endblock%}
 
 {%block content%}
-
+{%load static%}
         {%if messages%}
             {%for msg in messages%}
                 <div class="alert alert-success alert-dismissible">
@@ -22,30 +22,17 @@
             </div>
         </div>
         -->
-    <div class="container-fluid" style="height:105vh;">
-        <div class="text-center h-100 d-flex justify-content-center align-items-center">
-            <div class="container">
-                <h1 style="font-family: 'Oswald', sans-serif;">E-TARKARIPASAL WEB APP</h1>
-                <small class="text-muted">your vegetable friend</small><br>
-                <a href="#items">LET'S SHOP</a>
-            </div>
-        </div>
-    </div>
+
     <div class="container">
 
     <h4 class="heading-4 my-3" id="items">Items</h4>
 
     <div class="row row-cols-1 row-cols-md-3 ">
         {% for food in foods %}
-        
             <div class="col my-4">
                 <div class="card bg-light" id="card{{food.id}}">
-                    {%if food.image%}
-                    <img class="card-img-top" style="overflow:hidden;width:auto;min-height:250px ;" src="{{food.image.url}}" alt="Photo of {{food.name}}">
-                    {%else%}
-                    <img class="card-img-top" height="200px" width="200px" src="" alt="Photo of {{food.name}}">
-                    
-                    {%endif%}
+                    <img class="card-img-top" height=200 style="overflow:hidden;width:auto;min-height:250px;"
+                     src="{%static 'items/vege.jpg'%}" alt="Photo of {{food.name}}">
                     
                     <div class="card-body">
                         <h5 class="card-title">{{food.name}}</h5>

@@ -19,8 +19,7 @@
                 {%csrf_token%}
                 {{form|crispy}}
                 {{jform|crispy}}
-                <p>Select a Profile Picture</p>
-                {{ppform|crispy}}
+                {{gform|crispy}}
                 <input type="submit" value="signup">
                 <small class="text-muted">
                     Have an account <a href="{% url 'login'%}">Log in</a>

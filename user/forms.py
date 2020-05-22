@@ -3,7 +3,7 @@ from django.contrib.auth import forms
 from django.contrib.auth.models import User
 from django import forms as Fform
 
-from.models import Job,ProfilePicture,GeoData
+from.models import Job,GeoData
 
 
 class UserRegisterForm(UserCreationForm):
@@ -45,11 +45,3 @@ class UserLoginForm(forms.AuthenticationForm):
         "email",
         "password"
     ]
-
-class ProfilePictureForm(Fform.ModelForm):
-    class Meta:
-        model=ProfilePicture
-
-        fields=[
-            "pp",
-        ]
