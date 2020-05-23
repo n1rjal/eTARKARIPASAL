@@ -38,6 +38,7 @@ INSTALLED_APPS = [
 
     #3d party
     'crispy_forms',
+    'whitenoise.runserver_nostatic',
 
     #default
     'django.contrib.admin',
@@ -49,6 +50,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+
+    # 'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -134,3 +138,4 @@ STATIC_ROOT = os.path.join(BASE_DIR,"staticfiles")
 CRISPY_TEMPLATE_PACK="bootstrap4"
 
 LOGIN_URL="/user/login"
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
