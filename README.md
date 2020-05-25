@@ -1,9 +1,9 @@
 # eTARKARIPASAL
 >A sample ecommerce-site for my portfolio
 >Deployed (https://tarkariapp.herokuapp.com/)
-[Desktop Home View](./assests/screenshots/screenshots1.PNG)
-[Mobile Hom View](./assests/screenshots/screenshots2.PNG)
-[User Handling](./assests/screenshots/screenshots3.PNG)
+[Desktop Home View](/assests/screenshots/screenshots1.PNG)
+[Mobile Hom View](/assests/screenshots/screenshots2.PNG)
+[User Handling](/assests/screenshots/screenshots3.PNG)
 
 
 # Installation:
