@@ -1,19 +1,36 @@
 # eTARKARIPASAL
-This is a part of my portfolio site. This is an e-commerce site. 
-you can see the web site here.
-(https://tarkariapp.herokuapp.com/)
+>A sample ecommerce-site for my portfolio
+>Deployed (https://tarkariapp.herokuapp.com/)
+[Desktop Home View](./assests/screenshots/screenshots1.PNG)
+[Mobile Hom View](./assests/screenshots/screenshots2.PNG)
+[User Handling](./assests/screenshots/screenshots3.PNG)
 
-## Framework
-This website uses html5 as it's frontend and django as it's backend.
 
-## FAQ
+# Installation:
+OSX and linux
+```terminal
+sudo apt install git 
+sudo apt install python3
+sudo apt get python3-pip
+pip3 install pipenv
+git clone https://github.com/n1rjal/eTARKARIPASAL.git
+cd eTARKARIPASAL
+python3 manage.py runserver
+```
 
-#### Is the website using Bootstrap?
-Yes, this website uses bootstrap
+Windows
+Install git, python3.8 or higher, pip from the internet
+```terminal
+pip install pipenv
+git clone https://github.com/n1rjal/eTARKARIPASAL.git
+cd eTARKARIPASAL
+python3 manage.py runserver
+```
 
-#### Can i use it as template?
-Yes, feel free to use it.
+# Building Blocks
+* [Django](https://github.com/django/django)
+* HTML5
+* [Bootstrap](https://github.com/twbs/bootstrap)
 
-#### Can i get the ownership?
-Oops! yu need to buy it. First of all mail me 
-Here :(mailto:nirjalpaudel54312@gmail.com)
+# Meta
+> Nirjal Paudel :(nirjalpaudel54312@gmail.com)
