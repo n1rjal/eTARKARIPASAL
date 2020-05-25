@@ -21,14 +21,13 @@
         
         <a href="{%url 'export'%}">Click for the bill</a><br>
         <a href="{%url 'sucess'%}" class="m-2 btn btn-outline-primary">Pay using Esewa</a><br>
-        <a href="{url 'sucess'}" class="m-2 btn btn-outline-primary">Pay using Khalti</a><br>
+        <a href="{%url 'sucess'%}" class="m-2 btn btn-outline-primary">Pay using Khalti</a><br>
     </div>
     
 </div>
 <script>
     
     let xhr=new XMLHttpRequest();
-    console.log("called");
     xhr.open("GET","{%url 'currentcart'%}",true);
     xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
     xhr.send();
@@ -37,34 +36,33 @@
         if (xhr.readyState===4){
         let resp= xhr.responseText;
 
-    resp=JSON.parse(resp);
-    console.log(resp);
-    let total_items=parseInt(resp["total_items"]);
-    
-    for (let i=0;i<=total_items;i++)
-    {
+        resp=JSON.parse(resp);
+        let total_items=parseInt(resp["total_items"]);
+        
+        for (let i=0;i<=total_items;i++)
+        {
+            console.log(resp[i])
+            tablerow=`
+                <td>${i}</td>
+                <td>${resp[i].name}
+                <td>${resp[i].wprice}</td>
+                <td>${resp[i].rprice}</td>
+                <td>${resp[i].quantity}</td>
+                <td>${resp[i].wsum}</td>
+                <td>${resp[i].rsum}</td>
+                <td>${resp[i].wcalc}</td>
+                <td>${resp[i].rcalc}</td>
+            `
+            console.log("called")
+            let table=document.getElementById("mytable");
+            let tablenewrow=document.createElement('tr');
+            tablenewrow.innerHTML=tablerow;
+            table.appendChild(tablenewrow);
+        }
 
-        tablerow=`
-            <td>${i}</td>
-            <td>${resp[i].name}
-            <td>${resp[i].wprice}</td>
-            <td>${resp[i].rprice}</td>
-            <td>${resp[i].quantity}</td>
-            <td>${resp[i].wsum}</td>
-            <td>${resp[i].rsum}</td>
-            <td>${resp[i].wcalc}</td>
-            <td>${resp[i].rcalc}</td>
-        `
-        console.log("called")
-        let table=document.getElementById("mytable");
-        let tablenewrow=document.createElement('tr');
-        tablenewrow.innerHTML=tablerow;
-        table.appendChild(tablenewrow);
-    }
-
-    document.getElementById("total_items").innerHTML="Total Items = "+resp["total_items"]
-    document.getElementById("totalprice_wholesale").innerHTML="Wholesale Total = "+resp["wtotal"]
-    document.getElementById("totalprice_retail").innerHTML="Retail Total = "+resp["rtotal"]
+        document.getElementById("total_items").innerHTML="Total Items = "+resp["total_items"]
+        document.getElementById("totalprice_wholesale").innerHTML="Wholesale Total = "+resp["wtotal"]
+        document.getElementById("totalprice_retail").innerHTML="Retail Total = "+resp["rtotal"]
 
 
     }     

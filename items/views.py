@@ -53,8 +53,7 @@ def cart(request):
             curritem['name']=items[i].name
             curritem['wprice']="Rs "+str(items[i].wprice)
             curritem['rprice']="Rs "+str(items[i].rprice)
-            curritem['quantity']=str(item)
-
+            curritem['quantity']=str(item)+str(items[i].unit)
             #initial wholesale sum
             iniwsum=int(items[i].wprice) * int(item)
             curritem['wsum']="Rs "+str(iniwsum)
@@ -168,7 +167,7 @@ def export(request):
         print(i)
         print("\n\n")
         content={
-            
+
             "Name":currcursor["name"],
             "Wholesale Price":currcursor["wprice"],
             "Retail Price":currcursor["rprice"],
