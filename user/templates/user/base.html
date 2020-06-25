@@ -6,7 +6,13 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title> Tarkari
+        <title>
+          {%if request.session.name%}
+            {{request.session.name}}
+          {%else%}
+           Tarkari
+          {%endif%}
+           
             {%block title%}
             
             {%endblock%}
@@ -28,7 +34,14 @@
 
         
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <a class="navbar-brand" href="#">T-PASAL</a>
+        <a class="navbar-brand" href="#">
+
+          {%if request.session.name%}
+            {{request.session.name}}
+          {%else%}
+            T-Pasal
+          {%endif%}
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
         </button>

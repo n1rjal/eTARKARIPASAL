@@ -11,7 +11,12 @@ import csv
 # Create your views here.
 
 def home(request):
-    items=Items.objects.all()
+    name  = request.GET.get("name")
+
+    items = Items.objects.all()
+    request.session["name"]=name
+    
+    print(request.session.get("name"))
     return render(request,"items/index.html",{"foods":items})
 
 def cart(request):
