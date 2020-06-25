@@ -88,8 +88,8 @@ def cart(request):
         wtotal=wsum
         rtotal=rsum
         current_trans['total_items']=i+1
-        current_trans['rtotal']="Rs "+str(wtotal)
-        current_trans['wtotal']="Rs "+str(rtotal)
+        current_trans['rtotal']="Rs "+str(rtotal)
+        current_trans['wtotal']="Rs "+str(wtotal)
         qform=QuantityForm(request.POST)
         
 
