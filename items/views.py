@@ -6,7 +6,9 @@ from django.contrib import sessions
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
+from hashlib import sha256
 
+import datetime
 import csv
 # Create your views here.
 
@@ -142,9 +144,14 @@ def bill(request):
 
 def sucess(request):
     if request.session.get('current_transaction') is not None:
+        codetotransfer=(str(datetime.datetime.today())+request.user.username).encode()
+        code=sha256(codetotransfer).hexdigest()
+        context={
+            "tcode":code[0:8]
+        }
         text=request.session['current_transaction']
         current_transaction=Transaction(user=request.user,transactiontext=text)
-        return render(request,"items/sucess.html")
+        return render(request,"items/sucess.html",context)
     else:
         return redirect('homepage')
 

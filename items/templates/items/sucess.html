@@ -1,17 +1,19 @@
 {%extends "user/base.html"%}
 
 {%block content%}
-    <h4 class="display-4">Your Transaction is Sucessful</h4>
-    <div class="container">
-        <h3 class="heading-3">
-            List of transport
-        </h3>
-        <ol type="1">
-            <li>Ram Sherpa 4-wheeler (Ba 2 kha 1231)  <a href="tel:984232311">Phone</a></li>
-            <li>Mano Ram 6-Wheeler (Ba 66 pa 3242) <a href="tel:984212311">Phone</a></li>
-            <li>Hari Gyawali  (Ba 70 pa 2142) <a href="tel:984211311">Phone</a></li>
-        </ol>
-
+    <div class="container ,y-3">
+        <h4 class="display-4">Your Transaction is Sucessful</h4>
+        <small class="text-muted">T-Code : {{tcode}}</small>
+        <div class="container">
+            <h3 class="heading-3">
+                List of transport
+            </h3>
+            <ol type="1">
+                <li>Ram Sherpa 4-wheeler (Ba 2 kha 1231)  <a href="tel:984232311">Phone</a></li>
+                <li>Mano Ram 6-Wheeler (Ba 66 pa 3242) <a href="tel:984212311">Phone</a></li>
+                <li>Hari Gyawali  (Ba 70 pa 2142) <a href="tel:984211311">Phone</a></li>
+            </ol>
+        </div>
     </div>
 
 {%endblock%}
