@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     #my app
     'user.apps.UserConfig',
     'items.apps.ItemsConfig',
-
+    'warehouse.apps.WarehouseConfig',
     #3d party
     'crispy_forms',
     'whitenoise.runserver_nostatic',
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
 ]
 
 MIDDLEWARE = [

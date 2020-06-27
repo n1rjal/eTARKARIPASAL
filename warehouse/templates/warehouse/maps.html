@@ -1,0 +1,169 @@
+{%load static%}
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>WareHouses Map View</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="https://fonts.googleapis.com/css2?family=Oswald&amp;display=swap" rel="stylesheet">
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+		<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+        <style>
+          html{
+            scroll-behavior: smooth !important;
+          }
+		</style>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="{%static 'warehouse/maps.css'%}" type="text/css">
+		<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>		
+	</head>
+	
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-dark text-white">
+		<a class="navbar-brand text-white" href="{%url 'home'%}">T-PASAL</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+	  
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		  <ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+			  <a class="nav-link text-white" href="{%url 'home'%}">Home <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link text-white" href="{%url 'homepage'%}">Store</a>
+			</li>
+		  </ul>
+		  <form class="form-inline my-2 my-lg-0" action="{%url 'search'%}">
+			<input class="form-control mr-sm-2" name="search-query" type="search" placeholder="Search" aria-label="Search">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		  </form>
+		</div>
+	  </nav>
+
+	<div class="containall">
+		<div class="container">
+			<div class="counter">
+				<div class="container-fluid" style="padding-top: 2cm;background-color: #ffffff;">
+					<h4 class="heading-4" style="padding-top: 2cm;background-color: #ffffff;text-transform: uppercase;font-family: 'Bebas Neue', cursive; font-size: 50px;">Welcome to E-TarkariPasal</h4>
+					<h5 class="heading-5" style="padding-bottom: 2cm;background-color: #ffffff;text-transform: uppercase;font-family: 'Bebas Neue', cursive; font-size:25px">We will automate your vegetable need</h4>
+				</div>
+		
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+							<div class="employees">
+								<p class="counter-count">{{whs|length}}</p>
+								<p class="employee-p">WareHouses</p>
+							</div>
+						</div>
+			
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+							<div class="customer">
+								<p class="counter-count">{{allitems|length}}</p>
+								<p class="customer-p">Tarkari</p>
+							</div>
+						</div>
+			
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+							<div class="design">
+								<p class="counter-count">{{allusers|length}}</p>
+								<p class="design-p">Users</p>
+							</div>
+						</div>
+			
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+							<div class="order">
+								<p class="counter-count">99%</p>
+								<p class="order-p">Service</p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="mapholder">
+			<span class="syw">
+				Select Your WareHouse
+				<i style="font-size:50px;margin-left: 10px;color:orange;" class="fa">&#xf015;</i>
+			</span>
+
+			<div id="map">
+				
+			</div>
+		</div>
+
+	</div>
+	<footer class="page-footer font-small special-color-dark pt-4">
+
+		<!-- Footer Elements -->
+		<div class="container">
+	  
+		  <!-- Social buttons -->
+		  <ul class="list-unstyled list-inline text-center">
+			<li class="list-inline-item">
+			  <a class="btn-floating btn-fb mx-1" href="https://www.facebook.com/nirjaling">
+				<i class="fa fa-facebook-official" style="color: black;" aria-hidden="true"></i>
+			  </a>
+			</li>
+			<li class="list-inline-item">
+			  <a href="mailto:nirjalpaudel54312@gmail.com" class="btn-floating btn-li mx-1">
+				<i class="fa fa-envelope" aria-hidden="true"></i>
+			  </a>
+			</li>
+			<li class="list-inline-item">
+			  <a class="btn-floating btn-gplus mx-1" href="https://github.com/n1rjal">
+				<i class="fa fa-github" style="color: black;" aria-hidden="true"></i>
+			  </a>
+			</li>
+			
+		  </ul>
+		</div>
+		<!-- Footer Elements -->
+	
+		<!-- Copyright -->
+		<div class="footer-copyright text-center py-3">© 2020 Copyright:
+		<a href="/">E-TarkariPasal</a>
+		</div>
+		<!-- Copyright -->
+		
+	</footer>
+	<!-- Footer -->
+	
+	<script>
+		
+		let strurl="{%url 'homepage'%}";
+		let whs=[
+			{%for wh in whs%}
+				{
+					"name": "{{wh.name}}",
+					"lat" : "{{wh.lat}}",
+					"lng" : "{{wh.lng}}",
+
+					"info": `{{wh.info|safe}}`
+				},
+			{%endfor%}
+		]
+
+	</script>
+	<script src="{%static 'warehouse/maps.js'%}" ></script>
+	<script src="{%static 'warehouse/counter.js'%}"></script>
+	<!-- Footer -->
+
+</body>
+
+
+</html>
+

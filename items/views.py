@@ -6,8 +6,9 @@ from django.contrib import sessions
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
-from hashlib import sha256
+from django.views.decorators.csrf import csrf_exempt
 
+from hashlib import sha256
 import datetime
 import csv
 # Create your views here.
@@ -195,14 +196,15 @@ def export(request):
     
     return response
 
-
+@csrf_exempt
 def search(request):
     if request.method=="GET":
         
-        searchquery=request.GET['search-query']
-        items=Items.objects.filter(name__startswith=searchquery)
-        users=User.objects.filter(username__startswith=searchquery)
-        
+        searchquery=request.GET.get('search-query')
+        items=Items.objects.filter(name__contains=searchquery)
+        users=User.objects.filter(username__contains=searchquery)
+        print(items)
+        print(users)
         return render(request,"items/searchresults.html",{"items":items,"users":users})
     
     if request.method=="GET":

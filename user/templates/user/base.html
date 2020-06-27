@@ -34,7 +34,7 @@
 
         
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{%url 'home'%}">
 
           {%if request.session.name%}
             {{request.session.name}}
@@ -48,8 +48,12 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="{%url 'homepage'%}">Home</a>
+                <a class="nav-link" href="{%url 'home'%}">Home</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{%url 'homepage'%}">Store</a>
+            </li>
+          
             <li class="nav-item">
                 <a class="nav-link" href="{%url 'about'%}">About</a>
             </li>
@@ -85,7 +89,6 @@
             {%endif%}
         </ul>
         <form class="form-inline mx-2 my-2 my-lg-0" method="GET" action="{%url 'search'%}">
-          {%csrf_token%}
           <input class="form-control mr-sm-2" type="search" placeholder="Search" name="search-query" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
@@ -131,7 +134,7 @@
 
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="/">Tarkari App</a>
+    <a href="/">E-TarkariPasal</a>
     </div>
     <!-- Copyright -->
     
