@@ -33,8 +33,7 @@ function initMap(){
                 url: strurl
             })
 
-            console.log(locations.name);
-
+            
         google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
             return function() {
                 infowindow.setContent(locations.info);
