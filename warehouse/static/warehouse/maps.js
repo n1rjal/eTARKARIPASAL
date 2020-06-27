@@ -7,54 +7,55 @@ var locations = [
             ['<h1>Chautara WareHouse</h1> <br> A warehouse situated in Chautara. <br> Currently warehouse holds more than 45 tons of vegetables <br><h4>Full Capacity : 50 tons</h4> <h4>Filled Capacity : 45 tons</h4> <h4>Free Capacity : 5 tons</h4>',27.7761, 85.6948,'http://tarkariapp.herokuapp.com/?name=Chautara Warehouse ']
         ];
 */
-
-var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 10,
-    center: new google.maps.LatLng(27.6329,85.7025),
-});
-
-var infowindow = new google.maps.InfoWindow();
-
-var marker, i;
-/*
-for (i = 0; i < locations.length; i++) {
-        marker = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-        map: map,
-        url: locations[i][4]
+function initMap(){
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 10,
+        center: new google.maps.LatLng(27.6329,85.7025),
     });
-*/
 
-    for (i = 0; i < whs.length; i++) {
-        let locations=whs[i]
-        marker = new google.maps.Marker({
-            position: new google.maps.LatLng(locations.lat, locations.lng),
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+    /*
+    for (i = 0; i < locations.length; i++) {
+            marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
             map: map,
-            url: strurl
-        })
+            url: locations[i][4]
+        });
+    */
 
-        console.log(locations.name);
+        for (i = 0; i < whs.length; i++) {
+            let locations=whs[i]
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations.lat, locations.lng),
+                map: map,
+                url: strurl
+            })
 
-    google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
-        return function() {
-            infowindow.setContent(locations.info);
-            infowindow.open(map, marker);
-        }
-    })(marker, i));
+            console.log(locations.name);
 
-    google.maps.event.addListener(marker, 'mouseout', (function(marker, i) {
-        return function() {
-            infowindow.close(map, marker);
-        }        
-    })(marker, i));
+        google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
+            return function() {
+                infowindow.setContent(locations.info);
+                infowindow.open(map, marker);
+            }
+        })(marker, i));
+
+        google.maps.event.addListener(marker, 'mouseout', (function(marker, i) {
+            return function() {
+                infowindow.close(map, marker);
+            }        
+        })(marker, i));
 
 
-    google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        return function() {
-            infowindow.setContent(locations.info);
-            infowindow.open(map, marker);
-            window.location.href = strurl;
-        }
-    })(marker, i));
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+                infowindow.setContent(locations.info);
+                infowindow.open(map, marker);
+                window.location.href = strurl;
+            }
+        })(marker, i));
 
+    }
 }

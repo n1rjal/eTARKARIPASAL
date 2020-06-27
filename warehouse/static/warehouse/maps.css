@@ -31,14 +31,20 @@
 }
 
 .mapholder{
+    margin-bottom:1cm;
     max-width: 100vw;
     max-height: 100vh;
+}
+
+.container{
+    padding:1cm 0;
 }
 
 .counter
 {
     background-color: #eaecf0 !important;
     text-align: center;
+    
 }
 .employees,.customer,.design,.order
 {
@@ -51,9 +57,9 @@
 }
 
 .counter-count
-
 {
-    font-size: 18px;
+    
+    font-size: 25px;
     background-color: #3c4244;
     border-radius: 50%;
     position: relative;
