@@ -1,6 +1,8 @@
 # eTARKARIPASAL
 >A sample ecommerce-site for my portfolio<br>
 >Deployed (https://tarkariapp.herokuapp.com/)<br>
+>Try not to redeploy it but you can see the code
+
 <img src="assets/screenshots/screenshot1.PNG"><br>
 <img src="assets/screenshots/screenshot2.PNG">
 <img src="assets/screenshots/screenshot4.PNG"><br>
