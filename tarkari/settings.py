@@ -23,7 +23,7 @@ with open("seckey.txt","r") as filee:
     SECRET_KEY = filee.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['tarkariapp.herokuapp.com','192.168.1.94','localhost','127.0.0.1']
 
