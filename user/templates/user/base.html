@@ -46,55 +46,54 @@
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="{%url 'home'%}">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{%url 'homepage'%}">Store</a>
-            </li>
-          
-            <li class="nav-item">
-                <a class="nav-link" href="{%url 'about'%}">About</a>
-            </li>
-            {%if user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{%url 'profile'%}">Profile</a>
-                </li>    
-                <li class="nav-item">
-                    <a class="nav-link" href="{%url 'logout'%}">Log Out </a>
-                </li>
-            {%else%}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">Log in</a>
-                </li>    
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'signup'%}">Signup </a>
-                </li>
-            {%endif%}
+          <ul class="navbar-nav  mr-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="{%url 'home'%}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{%url 'homepage'%}">Store</a>
+              </li>
             
-            {%if 'cart_items' in request.session%}
-            <li class="nav-item">
-                <a href="{%url 'cart'%}" style="color:rgb(209, 65, 65)" class="nav-link">
-                    <i style="font-size:24px;" class="fa">&#xf07a;</i><sup style="font-size:1em;padding: 3px 5px;color:rgb(255, 255, 255)">{{request.session.cart_items|length}}</sup>
-                  </a>
-            </li>
-            {%else%}
-            <li class="nav-item">
-              <a href="{%url 'cart'%}" class="nav-link">
-                  <i style="font-size:24px" class="fa">&#xf07a;</i>
-              </a>
-            </li>
-            
-            {%endif%}
-        </ul>
-        <form class="form-inline mx-2 my-2 my-lg-0" method="GET" action="{%url 'search'%}">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" name="search-query" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-        </div> 
-        
-    </nav>
+              <li class="nav-item">
+                  <a class="nav-link" href="{%url 'about'%}">About</a>
+              </li>
+              {%if user.is_authenticated %}
+                  <li class="nav-item">
+                      <a class="nav-link" href="{%url 'profile'%}">Profile</a>
+                  </li>    
+                  <li class="nav-item">
+                      <a class="nav-link" href="{%url 'logout'%}">Log Out </a>
+                  </li>
+              {%else%}
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'login' %}">Log in</a>
+                  </li>    
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'signup'%}">Signup </a>
+                  </li>
+              {%endif%}
+              
+              {%if 'cart_items' in request.session%}
+              <li class="nav-item">
+                  <a href="{%url 'cart'%}" style="color:rgb(209, 65, 65)" class="nav-link">
+                      <i style="font-size:24px;" class="fa">&#xf07a;</i><sup style="font-size:1em;padding: 3px 5px;color:rgb(255, 255, 255)">{{request.session.cart_items|length}}</sup>
+                    </a>
+              </li>
+              {%else%}
+              <li class="nav-item">
+                <a href="{%url 'cart'%}" class="nav-link">
+                    <i style="font-size:24px" class="fa">&#xf07a;</i>
+                </a>
+              </li>
+              
+              {%endif%}
+          </ul>
+          <form class="form-inline mx-2 my-2 my-lg-0" method="GET" action="{%url 'search'%}">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" name="search-query" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+       </div>      
+     </nav>
     
     
 
