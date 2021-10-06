@@ -36,7 +36,7 @@ def adduser(request):
         
         else:
             messages.error(request,"Invalid Entry")
-            return render(request,"user/signup.html",{"form":form,"jform":jform})
+            return render(request,"user/signup.html",{"form":form,"jform":jform,"gform":gform})
 
 
 # Create your views here.
