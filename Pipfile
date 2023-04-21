@@ -9,7 +9,7 @@ verify_ssl = true
 asgiref = "==3.2.7"
 django-crispy-forms = "==1.9.1"
 pytz = "==2020.1"
-sqlparse = "==0.3.1"
+sqlparse = "==0.4.4"
 Django = "==3.0.14"
 gunicorn = "*"
 whitenoise = "*"
